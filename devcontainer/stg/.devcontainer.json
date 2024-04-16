@@ -1,0 +1,7 @@
+{
+    "name": "spring-java-dev-con",
+    "dockerComposeFile": ["../../docker/docker-compose.yml"],
+    "service": "spring-java",
+    "workspaceFolder": "/myapp",
+    "extensions": ["vscjava.vscode-java-pack"]
+}

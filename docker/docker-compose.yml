@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  spring-java:
+    container_name: spring-sample-container
+    build:
+      context: ./java
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8000"
+    volumes:
+      - "..:/myapp:cached"
+    tty: true

@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+/* 
+    Maven Centralリポジトリが設定されています。
+    Maven Centralは、Javaライブラリの広範なコレクションがホストされている場所です。
+    この設定により、プロジェクトで使用する依存関係を解決するためにMaven Centralからライブラリをダウンロードできます。
+*/
+repositories {
+    mavenCentral()
+}
+// 依存関係が定義されています
+dependencies {
+    /*
+    Spring Web MVCフレームワークの依存関係を定義
+    これにより、Spring Web MVCを使用してWebアプリケーションを開発できます
+    */
+    implementation 'org.springframework:spring-webmvc:5.3.13' // Spring Web MVC
+    /*
+    Spring Contextの依存関係を定義
+    Spring Contextは、Springアプリケーションのコア機能を提供
+    */
+    implementation 'org.springframework:spring-context:5.3.13' // Spring Context
+    /*
+    Servlet APIの依存関係を定義
+    Servlet APIは、JavaのWebアプリケーションでServletを開発するためのAPI
+    */
+    implementation 'javax.servlet:javax.servlet-api:4.0.1' // Servlet API
+}
