@@ -1,6 +1,10 @@
 ## gradle init --type java-application
 「build.gradle」を作成するコマンド
 
+## gradle build
+build/が作成される
+build/libs/myapp.jarが作成される
+build/tmp/jar/MANIFEST.MFが作成される
 
 ## gradle dependencies
 Starting a Gradle Daemon (subsequent builds will be faster)
