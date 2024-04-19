@@ -1,4 +1,6 @@
 plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
 
@@ -27,4 +29,6 @@ dependencies {
     Servlet APIは、JavaのWebアプリケーションでServletを開発するためのAPI
     */
     implementation 'javax.servlet:javax.servlet-api:4.0.1' // Servlet API
+    implementation 'org.projectlombok:lombok:1.18.22' // Lombokの依存関係
+    implementation 'org.springframework.boot:spring-boot-starter-web' // Spring Web Starter
 }
