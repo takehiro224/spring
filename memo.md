@@ -2,9 +2,14 @@
 「build.gradle」を作成するコマンド
 
 ## gradle build
-build/が作成される
-build/libs/myapp.jarが作成される
-build/tmp/jar/MANIFEST.MFが作成される
+プロジェクト全体のビルドを実行する
+「Javaソースコードのコンパイル」「テストの実行」「必要なリソースのコピー」「アプリケーションのパッケージング」
+- build/が作成される
+- build/libs/myapp.jarが作成される
+- build/tmp/jar/MANIFEST.MFが作成される
+
+## gradle compileJava
+Javaソースコードのコンパイルだけを行う
 
 ## gradle dependencies
 Starting a Gradle Daemon (subsequent builds will be faster)
@@ -149,3 +154,14 @@ A web-based, searchable dependency report is available by adding the --scan opti
 
 BUILD SUCCESSFUL in 2s
 1 actionable task: 1 executed
+
+41:18
+20:27
+21:34
+19:32
+25
+
+3月: 1140 / 11598 = 0.098 => 91
+2月: 600 / 7467 = 0.08 => 92
+1月: 780 / 9934 = 0.07 => 93
+12月: 870 / 10292 = 0.08 => 92

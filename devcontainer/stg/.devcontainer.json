@@ -3,5 +3,12 @@
     "dockerComposeFile": ["../../docker/docker-compose.yml"],
     "service": "spring-java",
     "workspaceFolder": "/myapp",
-    "extensions": ["vscjava.vscode-java-pack"]
+    "settings": {
+        "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar"
+    },
+    "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-lombok",
+        "vscjava.vscode-gradle"
+    ]
 }
