@@ -31,4 +31,5 @@ dependencies {
     implementation 'javax.servlet:javax.servlet-api:4.0.1' // Servlet API
     implementation 'org.projectlombok:lombok:1.18.22' // Lombokの依存関係
     implementation 'org.springframework.boot:spring-boot-starter-web' // Spring Web Starter
+    implementation 'org.springframework.boot:spring-boot-starter-aop' // 
 }
