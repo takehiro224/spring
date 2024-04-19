@@ -11,6 +11,13 @@
 ## gradle compileJava
 Javaソースコードのコンパイルだけを行う
 
+## gradle bootRun
+GradleプロジェクトでSpring Bootアプリケーションを実行するためのGradleタスク
+このコマンドを実行すると、Spring Bootアプリケーションがビルドされ、埋め込みのTomcatサーバーで起動します
+
+1. Gradleプロジェクト内の依存関係を解決し、プロジェクトをビルドします。
+2. Spring Bootアプリケーションを起動します。これにより、組み込みのTomcatサーバーが起動し、アプリケーションが実行されます。
+
 ## gradle dependencies
 Starting a Gradle Daemon (subsequent builds will be faster)
 
