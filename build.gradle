@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.6.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'war'
 }
 
 /* 
@@ -33,4 +34,26 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web' // Spring Web Starter
     implementation 'org.springframework.boot:spring-boot-starter-aop' // 
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // 画面遷移するために必要(コントローラーからビューを返すために)
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+    providedCompile 'javax.servlet:jstl:1.2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+        // webApp {
+        //     srcDirs = ['src/main/webapp']
+        // }
+    }
+}
+
+war {
+    archiveFileName = 'myapp.war'
 }

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org" th:replace="~{layout ::base(~{::title}, ~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf Sample</title>
+</head>
+<body>
+    <!-- 01: 直接文字を埋め込む -->
+    <h1 th:text="'thymeleaf'">表示する部分</h1>
+    <!-- 02: インライン処理 -->
+    <h2>Hello [[${name}]].</h2>
+    <!-- 03: 値結合 -->
+    <h3 th:text="'明日は、' + '晴れ' + 'です。'">表示する部分</h3>
+    <!-- 04: 値結合(リテラル置換) -->
+    <h3 th:text="|Hello!${name}.|"></h3>
+    <!-- 05: ローカル変数 -->
+    <div th:with="a=1,b=2">
+        <span th:text="|${a} + ${b} = ${a+b}|"></span>
+    </div>
+    <!-- 06: 比較と等価 -->
+    <span th:text="1 > 10"></span>
+    <span th:text="1 < 10"></span>
+    <span th:text="1 >= 10"></span>
+    <span th:text="1 <= 10"></span>
+    <span th:text="1 == 10"></span>
+    <span th:text="1 != 10"></span>
+    <span th:text="Taro == Taro"></span>
+    <span th:text="Taro != Taro"></span>
+    <hr>
+    <!-- 07: 条件演算子 -->
+    <p th:text="${name} == 'Taro' ? 'You are Taro.' : 'You are not Taro.'"></p>
+    <!-- 08: 条件分岐(true) -->
+    <div th:if="${name} == 'Taro'">
+        <p>Taro</p>
+    </div>
+    <!-- 09: 条件分岐(false) -->
+    <div th:unless="${name} == Jiro">
+        <p> Not Taro</p>
+    </div>
+
+    <!-- 10: switch -->
+    <div th:switch="${name}">
+        <p th:case="Taro" th:text="|${name}.!|"></p>
+        <p th:case="Jiro" th:text="|${name}.!|"></p>
+        <p th:case="Hanako" th:text="|${name}.!|"></p>
+        <p th:case="" th:text="|${name}.!|"></p>
+        <p th:case="*">名簿にありません</p>
+    </div>
+    <!-- 11: 参照(データをまとめたオブジェクト) -->
+    <span th:text="${mb.id}">ID</span>-<span th:text="${mb.name}">名前</span>
+    <br>
+    <span th:text="${mb['id']}">ID</span>-<span th:text="${mb['name']}">名前</span>
+    <br>
+    <!-- 12: 参照(th:object) -->
+    <th:block th:object="${mb}">
+        <span th:text="*{id}">ID</span>-<span th:text="*{name}">名前</span>
+        <br>
+        <span th:text="*{['id']}">ID</span>-<span th:text="*{['name']}">名前</span>
+    </th:block>
+    <hr>
+    <!-- 13: 参照(List) -->
+    <span th:text="${list[0]}">方角</span>
+    <span th:text="${list[1]}">方角</span>
+    <span th:text="${list[2]}">方角</span>
+    <span th:text="${list[3]}">方角</span><br>
+    <!-- 14: 参照(Map) -->
+    <span th:text="${map.jiro.name}">名前1</span>
+    <span th:text="${map.hanako.name}">名前2</span>
+    <span th:text="${map['jiro']['name']}">名前1: []でアクセス</span>
+    <span th:text="${map['hanako']['name']}">名前2: []でアクセス</span>
+    <!-- 15: 繰り返し -->
+    <div th:each="member: ${members}">
+        <p>[[${member.id}]] : [[${member.name}]]</p>
+    </div>
+    <hr>
+    <!-- 16: 繰り返しのステータス -->
+    <div th:each="member, s: ${members}" th:object="${member}">
+        <p>
+            index -> [[${s.index}]], count -> [[${s.count}]],
+            size -> [[${s.size}]], current -> [[${s.current}]],
+            even -> [[${s.even}]], odd -> [[${s.odd}]],
+            first -> [[${s.first}]], last -> [[${s.last}]],
+            [[*{id}]]: [[*{name}]]
+        </p>
+    </div>
+    <!-- 17: ユーティリティオブジェクト(数値・日時・文字列) -->
+    <div th:with="x=1000000, y=123456.789">
+        整数のフォーマット: <span th:text="${#numbers.formatInteger(x, 3, 'COMMA')}"></span><br>
+        浮動小数点のフォーマット: <span th:text="${#numbers.formatDecimal(y, 3, 'COMMA', 2, 'POINT')}"></span>
+    </div>
+    <br>
+    <div th:with="today=${#dates.createNow()}">
+        yyyy/mm/dd形式: <span th:text="${#dates.format(today, 'yyyy/MM/dd')}"></span><br>
+        yyyy年mm月dd日形式: <span th:text="${#dates.format(today, 'yyyy年MM月dd日')}"></span><br>
+        yyyy年: <span th:text="${#dates.year(today)}"></span><br>
+        mm月: <span th:text="${#dates.month(today)}"></span><br>
+        dd日: <span th:text="${#dates.day(today)}"></span><br>
+        曜日: <span th:text="${#dates.dayOfWeek(today)}"></span><br>
+    </div>
+    <hr>
+    <!-- 18: フラグメントを埋め込む -->
+    <div id="one" th:insert="common :: header"></div>
+    <h1>上下にFragmentを埋め込む</h1>
+    <div id="two" th:insert="common :: footer"></div>
+</body>
+</html>
