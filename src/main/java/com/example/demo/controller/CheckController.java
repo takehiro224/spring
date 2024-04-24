@@ -13,7 +13,7 @@ import com.example.demo.form.AssertForm;
 public class CheckController {
     // 入力画面の表示
     @GetMapping("show03")
-    public String showForm(AssertForm assertForm) {
+    public String showForm(AssertForm assertForm) { /** 「form-backing bean」の初期化 */
         return "entry3";
     }
 
